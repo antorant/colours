@@ -1,0 +1,38 @@
+/* == | == Column system
+   == | */
+
+// full width on mobile
+.columns .column { width: 100%; @include clearfix; }
+
+$gutter: 40px;
+
+// larger screens...
+@media
+only screen and (min-width: 768px) {
+  .columns { @include clearfix; }
+  .columns .column { float: left; }
+
+  // two columns
+  .columns .column.half { width: 50%; }
+  .columns .column.half:nth-of-type(odd) { padding-right: $gutter * 0.5; }
+  .columns .column.half:nth-of-type(even) { padding-left: $gutter * 0.5; }
+
+  // three columns
+  .columns .column.third { width: 33.3%; padding-left: $gutter * 0.5; padding-right: $gutter * 0.5; }
+  .columns .column.third:nth-of-type(3n+1) { padding-left: 0; padding-right: $gutter * 0.5; }
+  .columns .column.third:nth-of-type(3n) {   padding-left: $gutter * 0.5; padding-right: 0; }
+
+  .columns .column.two-thirds { width: 66.6%; padding-left: $gutter * 0.5; padding-right: $gutter * 0.5; }
+  .columns .column.two-thirds:nth-of-type(odd) { padding-left: 0; padding-right: $gutter * 0.5; }
+  .columns .column.two-thirds:nth-of-type(even) { padding-left: $gutter * 0.5; padding-right: 0; }
+
+  .columns .column.two-thirds ~ .column.third:nth-of-type(odd) { padding-left: 0; padding-right: $gutter * 0.5; }
+  .columns .column.two-thirds ~ .column.third:nth-of-type(even) { padding-left: $gutter * 0.5; padding-right: 0; }
+
+  // four columns
+  .columns .column.quarter { width: 25%; padding-left: $gutter * 0.5; padding-right: $gutter * 0.5; }
+  .columns .column.quarter:nth-of-type(4n+1) { padding-left: 0; padding-right: $gutter * 0.75; } // first
+  .columns .column.quarter:nth-of-type(4n+2) { padding-left: $gutter * 0.25; padding-right: $gutter * 0.5; } // second
+  .columns .column.quarter:nth-of-type(4n+3) { padding-left: $gutter * 0.5; padding-right: $gutter * 0.25; } // third
+  .columns .column.quarter:nth-of-type(4n) {   padding-left: $gutter * 0.75; padding-right: 0; } // last
+}

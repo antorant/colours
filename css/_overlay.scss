@@ -1,0 +1,50 @@
+/* == | == Overlay
+   == | */
+.overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 0; height: 0;
+  overflow: hidden;
+
+  opacity: 0;
+
+  z-index: $z-under; z-index: $z-over;
+  &.on { width: 100%; height: 100%; }
+
+  color: $white;
+  background-color: fade-out( $black, .1);
+
+  button.close {
+    @include ir;
+    position: absolute;
+    top: 20px; right: 20px;
+
+    width: 20px; height: 20px;
+    padding: 0;
+
+    border: 0 none;
+
+    background-color: transparent;
+
+    background-image: url('../img/icon-x.svg');
+    background-size: 20px 20px;
+
+    &:focus { outline: none; }
+  }
+
+  .container.thin {
+    position: absolute;
+    top: 40px; bottom: 40px;
+    left: 50%; margin-left: -300px;
+    padding: 40px;
+    overflow: scroll;
+  }
+}
+
+body.overlay-on { overflow: hidden; }
+
+@media only screen and (max-width: 480px) {
+  .overlay .container.thin {
+    left: 10px; margin-left: 0; right: 10px;  
+  }
+}

@@ -1,0 +1,58 @@
+/* ======================================================================================================
+   == | == MIXINS
+   ====================================================================================================== */
+
+/* Image Replacement */
+@mixin ir {
+  // display: block;
+  border: 0;
+  text-indent: -999em;
+  overflow: hidden;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  text-align: left;
+  direction: ltr;
+  line-height: 0;
+  br { display: none; }
+}
+
+/* Opacity */
+@mixin opacity($val:1) {
+  opacity:$val;
+  $ieval: $val * 100;
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$ieval})";
+}
+
+/* Transition */
+@mixin transition($property: all, $time: .1s, $timing: ease-in-out) {
+  -o-transition: $property $time $timing;
+  -moz-transition: $property $time $timing;
+  -webkit-transition: $property $time $timing;
+  transition: $property $time $timing;
+}
+
+/* Placeholder Styles */
+@mixin placeholder-styles {
+  &::-webkit-input-placeholder { @content }
+  &:-moz-placeholder           { @content }
+  &::-moz-placeholder          { @content }
+  &:-ms-input-placeholder      { @content }
+}
+
+/* Clearing Floats */
+@mixin clearfix {
+  zoom: 1;
+  &:before, &:after {
+    content: '\0020';
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+  &:after { clear: both; }
+}
+
+@mixin simple-gradient($direction: to bottom, $start: #ffffff, $end: #000000) {
+  background-image: linear-gradient($direction, $start, $end);
+}

@@ -1,0 +1,391 @@
+/*
+sass --watch css/style.scss
+*/
+
+/* ======================================================================================================
+   == | == REFERENCE
+   ====================================================================================================== */
+/*
+
+
+
+[att^="val"] – the “begins with” selector
+[att$="val"] – the “ends with” selector
+[att*="val"] – the “contains” selector
+
+
+
+*/
+
+
+/* ======================================================================================================
+   == | == IMPORTS
+   ====================================================================================================== */
+@import 'reset';
+@import 'variables';
+@import 'mixins';
+
+/* ======================================================================================================
+   == | == FONTS
+   ====================================================================================================== */
+
+
+
+
+
+
+
+
+/* ======================================================================================================
+   == | == DEBUG STYLES
+   ====================================================================================================== */
+
+// * { background-color: rgba(255,0,0,.05); }
+// * * { background-color: rgba(0,255,0,.05); }
+// * * * { background-color: rgba(0,0,255,.05); }
+// * * * * { background-color: rgba(255,0,255,.05); }
+// * * * * * { background-color: rgba(0,255,255,.05); }
+// * * * * * * { background-color: rgba(255,255,0,.05); }
+
+
+/* ======================================================================================================
+   == | == BODY
+   ====================================================================================================== */
+body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.5;
+
+  color: $black;
+  background-color: $white;
+}
+
+::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
+::selection { background: #fe57a1; color: #fff; text-shadow: none; }
+
+
+
+
+/* ======================================================================================================
+   == | == LAYOUT
+   ====================================================================================================== */
+@import 'columns';
+
+body {
+  padding: 20px;
+}
+
+section { padding: 20px 0; }
+
+.container {
+  position: relative;
+  // width: 900px;
+  padding: 0 20px;
+  margin-left: auto; margin-right: auto;
+}
+
+.container.thin {
+  width: 600px;
+}
+
+@media only screen and (max-width: 767px) {
+  .container, .container.thin { width: 100%; }
+}
+
+
+
+
+/* == | == Consistent spacing ftw!
+   == | */
+h1, h2, h3, h4, h5, h6, p,
+fieldset, .field,
+input[type="text"], input[type="email"], input[type="password"],
+button, input[type="submit"],
+textarea,
+.error,
+.notice,
+.icon.arrow
+
+{
+  margin-bottom: 20px;
+}
+
+
+
+
+
+/* ======================================================================================================
+   == | == GENERAL STYLES
+   ====================================================================================================== */
+
+/* == | == links
+   == | */
+a, a:link {
+  text-decoration: underline;
+  color: inherit;
+}
+
+a:hover { text-decoration: none; }
+
+
+
+/* ======================================================================================================
+   == | == MODULAR
+   ====================================================================================================== */
+
+/* == | == modular text tools
+   == | */
+.small { font-size: 10px; letter-spacing: .5px; }
+.center { text-align: center; }
+
+.instructions {
+  font-size: 45px;
+  text-align: center;
+  color: lightgrey;
+
+  .key {
+    padding: 10px;
+    border-color: lightgrey;
+  }
+}
+
+.key {
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+
+/* == | == (title)
+   == | */
+
+// @import 'overlay';
+.results {
+  position: fixed;
+  top: 120px; left: 0;
+  bottom: 0;
+  width: 100%;
+  overflow-y: scroll;
+  padding: 20px;
+}
+
+.result {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  margin-bottom: 80px;
+}
+
+.swatch {
+  width: 40px; height: 40px;
+}
+
+.swatch--gradient {
+  position: relative;
+  &::before {
+    content: '';
+    top: 0; bottom: 0;
+    left: 0; right: 0;
+  }
+  @include simple-gradient(to top right, fade-out(white, .9), fade-out(black, .9));
+}
+
+
+
+.controls {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 120px;
+  padding: 20px;
+
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 40px;
+
+  border-bottom: 1px solid lightgrey;
+}
+
+.control {
+  position: relative;
+  width: 120px;
+  height: 80px;
+  padding-left: 10px;
+
+  text-align: left;
+}
+
+.control__input--number {
+  position: absolute;
+  -webkit-transform: rotate(-90deg);
+  float: left;
+  margin-top: 35px;
+  margin-left: -56px;
+  width: 80px;
+
+}
+
+.control__header {
+  height: 20px; line-height: 20px;
+  margin-bottom: 0;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.control__value {
+  pointer-events: none;
+  border: none;
+  height: 60px;
+  margin-top: 12px;
+  font-size: 48px;
+  font-weight: 100;
+}
+
+.control__value--base {
+  height: 60px;
+  padding: 0 10px;
+  border-width: 1px;
+  border-style: solid;
+
+  &:focus {
+    outline: none;
+    color: lightgrey;
+    border-color: lightgrey;
+  }
+}
+
+.control__value--number {
+  width: 110px;
+  height: 60px;
+}
+
+.control--base-colour {
+  width: 120px;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 1px; height: 10px;
+  padding: 0;
+  background: black;
+  cursor: pointer;
+  //margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  //width: 100%;
+  height: 10px;
+  cursor: pointer;
+  background-color: transparent;
+  border-bottom: 1px solid black;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  outline: none;
+  border-bottom: 1px solid $blue;
+}
+
+input[type=range]:focus::-webkit-slider-thumb {
+  background-color: $blue;
+}
+
+input[type=range]:focus ~ h4,
+input[type=range]:focus ~ .control__value  {
+  color: $blue;
+  & > .key { border-color: $blue; }
+}
+
+/* ======================================================================================================
+   == | == ELEMENT-SPECIFIC
+   ====================================================================================================== */
+
+/* == | == (title)
+   == | */
+
+
+
+/* ======================================================================================================
+   == | == PAGE SPECIFIC
+   ====================================================================================================== */
+
+/* == | == (title)
+   == | */
+
+
+
+
+/* ======================================================================================================
+   == | == MEDIA QUERIES
+   ====================================================================================================== */
+
+/* == | == retina
+   == | */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+
+}
+
+/* == | == tablet
+   == | */
+@media
+only screen and (min-width: 768px) {
+
+}
+
+
+/* == | == tablet / retina
+   == | */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5) and (min-width: 768px),
+only screen and (min-device-pixel-ratio : 1.5) and (min-width: 768px) {
+
+}
+
+/* == | == large
+   == | */
+@media only screen and (min-width: 1024px) {
+
+}
+
+/* == | == large / retina
+   == | */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5) and (min-width: 1024px),
+only screen and (min-device-pixel-ratio : 1.5) and (min-width: 1024px) {
+
+}
+
+
+
+
+
+/* ======================================================================================================
+
+   == | == PRINT STYLES
+
+   ====================================================================================================== */
+@media print {
+  * { background: transparent !important; color: black !important; box-shadow:none !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; }
+  a, a:visited { text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; }
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
