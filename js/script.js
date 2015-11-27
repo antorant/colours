@@ -85,38 +85,65 @@ function renderColours(){
     i++
   }
 
-  console.log(hues)
 
+  // a unique ID for the result
   timeStamp = Math.floor(Date.now() / 1000)
 
+  // an element for the swatches
   $result = $('<div></div>')
 
+  // attach the ID as a class
   $result.addClass('result result--' + timeStamp)
 
-  for (var i = 0; i < hues.length; i++) {
-   //console.log(hues[i]);
+  // an array for the HEX codes
+  var colourCodes = []
 
+  // create an element for the codes
+  $resultCodes = $('<pre></pre>')
+  // attach the ID as a class
+  $resultCodes.addClass('result__codes result--' + timeStamp)
+
+  // generate the swatches and codes
+  for (var i = 0; i < hues.length; i++) {
+
+    // something to work with
     newColour = $.Color('#000000')
+
+    // apply properties from defined settings
     newColour = newColour.hsla( hues[i], saturation, lightness, 1 )
 
-    newColour = newColour.toHslaString()
+    // get hsla and hex strings
+    newColourHsla = newColour.toHslaString()
+    newColourHex = newColour.toHexString()
 
+    colourCodes.push(newColourHex)
+
+    // create the swatch element
     $swatch = $('<div></div>')
     $swatch.addClass('swatch')
 
+    // TODO create a control for this
     if ( gradient == true ) {
       $swatch.addClass('swatch--gradient')
     }
-    
-    $swatch.css({'background-color': newColour })
 
+    // apply the colour to the swatch
+    $swatch.css({'background-color': newColourHsla })
+
+    // apply the width
     $swatch.css({'width': swatchWidth })
-    //$swatch.text(newColour)
 
+    // add the swatch to the result container
     $result.append($swatch)
-    //console.log(newColour)
   }
 
+  // print out the codes
+  $resultCodes.text( colourCodes.join(' ') )
+
+  // render the codes element
+  $('#results').prepend( $resultCodes )
+
+  // render the swatches element
   $('#results').prepend( $result )
 }
 
