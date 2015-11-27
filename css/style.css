@@ -287,12 +287,12 @@ body {
   background-color: #ffffff; }
 
 ::-moz-selection {
-  background: #fe57a1;
+  background: dodgerblue;
   color: #fff;
   text-shadow: none; }
 
 ::selection {
-  background: #fe57a1;
+  background: dodgerblue;
   color: #fff;
   text-shadow: none; }
 
@@ -475,7 +475,11 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-bottom: 80px; }
+  margin-bottom: 20px; }
+
+.result__codes {
+  margin-bottom: 80px;
+  text-align: center; }
 
 .swatch {
   width: 40px;
