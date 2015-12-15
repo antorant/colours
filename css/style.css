@@ -474,8 +474,10 @@ a:hover {
 .result {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  margin-bottom: 20px; }
+  justify-content: center;
+  margin-bottom: 80px;
+  padding-bottom: 80px;
+  border-bottom: 1px solid lightgrey; }
 
 .result__codes {
   margin-bottom: 80px;
@@ -483,7 +485,8 @@ a:hover {
 
 .swatch {
   width: 40px;
-  height: 40px; }
+  height: 40px;
+  margin: 5px; }
 
 .swatch--gradient {
   position: relative;

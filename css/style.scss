@@ -171,9 +171,14 @@ a:hover { text-decoration: none; }
 .result {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 
-  margin-bottom: 20px;
+
+
+  margin-bottom: 80px;
+  padding-bottom: 80px;
+
+  border-bottom: 1px solid lightgrey;
 }
 
 .result__codes {
@@ -183,6 +188,8 @@ a:hover { text-decoration: none; }
 
 .swatch {
   width: 40px; height: 40px;
+  margin: 5px;
+  //border-radius: 20px;
 }
 
 .swatch--gradient {
