@@ -243,16 +243,21 @@ function renderColours(){
   // a unique ID for the result
   timeStamp = Math.floor(Date.now() / 1000)
 
-  // an element for the swatches
+  // an element for the result
   $result = $('<div></div>')
-
   // attach the ID as a class
   $result.addClass('result result--' + timeStamp)
 
-  // // create an element for the codes
-  // $resultCodes = $('<pre></pre>')
-  // // attach the ID as a class
-  // $resultCodes.addClass('result__codes result--' + timeStamp)
+  // an element for the swatches
+  $swatches = $('<div></div>')
+
+  // attach the ID as a class
+  $swatches.addClass('result__swatches')
+
+  // create an element for the codes
+  $codes = $('<pre></pre>')
+  // attach the ID as a class
+  $codes.addClass('result__codes')
 
   // an array for the colours
   var colours = []
@@ -295,22 +300,28 @@ function renderColours(){
     // apply the step colour to the swatch
     $swatch.css({'background-color': colours[modulo]['hsla'] })
 
-    // apply the width
-    //$swatch.css({'width': swatchWidth })
-
     // add the swatch to the result container
-    $result.append($swatch)
-
+    $swatches.append($swatch)
   }
 
-  // // print out the codes
-  // $resultCodes.text( colourCodes.join(' ') )
-  //
-  // // render the codes element
-  // $('#results').prepend( $resultCodes )
-  //
-  // render the swatches element
+
+
+  // print out the codes
+  for (var i = 0; i < colours.length; i++) {
+    $code = $('<span class="result__code"></span>')
+    $code.text( colours[i]['hex'] )
+    $code.css({'border-bottom-color': colours[i]['hex']})
+    $codes.append( $code )
+
+    //if (i < colours.length) $codes.append( ' ' )
+  }
+
+  $result.append($swatches)
+  $result.append($codes)
+
+  // render the whole result at the top
   $('#results').prepend( $result )
+
 }
 
 

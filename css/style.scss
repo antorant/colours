@@ -169,21 +169,28 @@ a:hover { text-decoration: none; }
 }
 
 .result {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-
-
-
   margin-bottom: 80px;
   padding-bottom: 80px;
 
   border-bottom: 1px solid lightgrey;
 }
 
+.result__swatches {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .result__codes {
   margin-bottom: 80px;
   text-align: center;
+}
+
+.result__code {
+  display: inline-block;
+  margin: 10px 10px;
+  padding: 5px;
+  border-bottom: 4px solid;
 }
 
 .swatch {
