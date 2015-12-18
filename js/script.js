@@ -205,6 +205,7 @@ function updateControlReadout($el){
   }
 }
 
+// TODO split into separate functions
 function renderColours(){
 
   var base = '#' + $('#control-base').val()
@@ -236,9 +237,15 @@ function renderColours(){
   while ( i < steps ) {
     newHue = hue + ( i * interval )
 
+    // limit to range 0-360
+    newHue = newHue % 360
+
     hues.push( newHue )
     i++
   }
+
+  // Sort lowest to highest
+  hues.sort( function(a,b){ return a - b })
 
   // a unique ID for the result
   timeStamp = Math.floor(Date.now() / 1000)
