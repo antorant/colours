@@ -1,3 +1,3 @@
 # colours
 
-A [pretty colours](http://smoothandfresh.com/_/colours) machine.
+A [pretty colours](http://antorant.github.io/colours) machine.
