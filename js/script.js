@@ -48,7 +48,7 @@ function renderColours(){
   var saturation = $('#control-saturation').val()
   var lightness = $('#control-lightness').val()
 
-  var gradient = true
+  var gradient = false
 
   var swatchWidth = 100 / ( steps )
   swatchWidth -= 1

@@ -192,6 +192,7 @@ a:hover { text-decoration: none; }
     top: 0; bottom: 0;
     left: 0; right: 0;
   }
+  
   @include simple-gradient(to top right, fade-out(white, .9), fade-out(black, .9));
 }
 
